@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://ivxc45l20cfa"]
+
+[ext_resource type="PackedScene" uid="uid://bkv0mgw1spm67" path="res://src/gameplay/player/player.tscn" id="1_ax7b2"]
+[ext_resource type="Texture2D" uid="uid://yxp5t0jdp5xy" path="res://assets/art/thumb-1920-1069903.jpg" id="2_63kum"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iye4x"]
+size = Vector2(1057, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_75k5o"]
+size = Vector2(525, 35)
+
+[node name="Node2D" type="Node2D" unique_id=469839150]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1960667420]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=914134938]
+position = Vector2(549, 649)
+shape = SubResource("RectangleShape2D_iye4x")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=1238483692]
+custom_minimum_size = Vector2(1152, 50)
+offset_left = 13.0
+offset_top = 628.0
+offset_right = 1165.0
+offset_bottom = 678.0
+color = Color(0.167525, 0.43145776, 0.19829476, 1)
+
+[node name="Player" parent="." unique_id=1101448845 instance=ExtResource("1_ax7b2")]
+position = Vector2(557, 442)
+speed = 500.0
+jump_velocity = -400.0
+
+[node name="Platform" type="StaticBody2D" parent="." unique_id=1709446740]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform" unique_id=314600029]
+position = Vector2(913, 560)
+shape = SubResource("RectangleShape2D_75k5o")
+
+[node name="ColorRect" type="ColorRect" parent="Platform" unique_id=2006848271]
+custom_minimum_size = Vector2(525, 0)
+offset_left = 652.0
+offset_top = 541.0
+offset_right = 1177.0
+offset_bottom = 581.0
+color = Color(0.5253976, 0.38809276, 0.1593475, 1)
+
+[node name="Background" type="Sprite2D" parent="." unique_id=19544024]
+show_behind_parent = true
+position = Vector2(627, 322)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_63kum")
