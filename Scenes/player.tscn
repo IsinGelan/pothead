@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://6qpe4cj0t1np"]
+
+[ext_resource type="Script" uid="uid://oab7pokcbaok" path="res://Scripts/player.gd" id="1_v0iea"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xrivr"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_b1lj4"]
+radius = 5.0
+height = 20.0
+
+[sub_resource type="Curve" id="Curve_cvnsp"]
+
+[sub_resource type="Curve" id="Curve_6t5aa"]
+
+[sub_resource type="Curve" id="Curve_vgqql"]
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_v0iea"]
+curve_x = SubResource("Curve_cvnsp")
+curve_y = SubResource("Curve_6t5aa")
+curve_z = SubResource("Curve_vgqql")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_13qdw"]
+radius = 5.0
+height = 20.0
+
+[node name="player" type="CharacterBody2D" unique_id=645167534]
+script = ExtResource("1_v0iea")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1347482827]
+sprite_frames = SubResource("SpriteFrames_xrivr")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1893908026]
+mesh = SubResource("CapsuleMesh_b1lj4")
+texture = SubResource("CurveXYZTexture_v0iea")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1654965767]
+shape = SubResource("CapsuleShape2D_13qdw")

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://57hqkn03mob5"]
+
+[ext_resource type="PackedScene" uid="uid://6qpe4cj0t1np" path="res://Scenes/player.tscn" id="1_ebmjs"]
+[ext_resource type="PackedScene" uid="uid://bp5djqvu6uyl7" path="res://Scenes/platform.tscn" id="3_wrm1d"]
+
+[node name="Game" type="Node2D" unique_id=1718797982]
+
+[node name="player" parent="." unique_id=645167534 instance=ExtResource("1_ebmjs")]
+position = Vector2(-1, -2)
+
+[node name="StaticBody2D" parent="." unique_id=2072508739 instance=ExtResource("3_wrm1d")]
+position = Vector2(-151, 19)
+
+[node name="StaticBody2D2" parent="." unique_id=731505023 instance=ExtResource("3_wrm1d")]
+position = Vector2(131, -44)
+
+[node name="StaticBody2D3" parent="." unique_id=108307945 instance=ExtResource("3_wrm1d")]
+position = Vector2(27.999985, 80)
+scale = Vector2(2.3380618, 1.090575)
+
+[node name="StaticBody2D4" parent="." unique_id=1085880654 instance=ExtResource("3_wrm1d")]
+position = Vector2(91, 39)
+scale = Vector2(0.48000124, 0.39999998)
+
+[node name="StaticBody2D5" parent="." unique_id=1166544598 instance=ExtResource("3_wrm1d")]
+position = Vector2(-208, 71.00001)
+scale = Vector2(0.8044025, -2.8429952)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1242250041]
+position = Vector2(-1, -2)
+zoom = Vector2(4, 4)

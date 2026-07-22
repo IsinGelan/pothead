@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://1h8ldichm2fx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_13qdw"]
+size = Vector2(1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_b1lj4"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_njqwk"]
+
+[node name="Node2D" type="Node2D" unique_id=946969372]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=328955830]
+position = Vector2(11, 947)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2090911482]
+position = Vector2(0, 1)
+scale = Vector2(2400, 1200)
+shape = SubResource("RectangleShape2D_13qdw")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D/CollisionShape2D" unique_id=187539842]
+mesh = SubResource("BoxMesh_b1lj4")
+texture = SubResource("NoiseTexture2D_njqwk")
