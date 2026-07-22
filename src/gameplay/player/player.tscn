@@ -8,8 +8,8 @@ size = Vector2(83, 89)
 
 [node name="Player" type="CharacterBody2D" unique_id=1733208926]
 position = Vector2(396, 232)
+collision_layer = 3
 script = ExtResource("1_64h4j")
-jump_velocity = -800.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2759384]
 position = Vector2(-1, 1)
