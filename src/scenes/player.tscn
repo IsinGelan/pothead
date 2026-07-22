@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bkv0mgw1spm67"]
 
-[ext_resource type="Script" uid="uid://bgc6dde1blqvj" path="res://src/gameplay/player/player.gd" id="1_64h4j"]
+[ext_resource type="Script" uid="uid://bgc6dde1blqvj" path="res://src/scripts/player.gd" id="1_64h4j"]
 [ext_resource type="Texture2D" uid="uid://1qwy8etcr3wb" path="res://assets/art/cuphead-animation-video-game-cartoon-colorful-run.jpg" id="2_64h4j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iye4x"]
