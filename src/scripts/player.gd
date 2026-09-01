@@ -34,7 +34,7 @@ func jump() -> void:
 
 func horizontal_move() -> bool:
 	# returns whether player got movement input
-	var key_pressed_direction = Input.get_axis("ui_left", "ui_right")
+	var key_pressed_direction = Input.get_axis("walk left", "walk right")
 	if key_pressed_direction:
 		velocity.x = key_pressed_direction * horizontal_speed
 		return true
@@ -47,7 +47,7 @@ func slow_down() -> void:
 # Movement functions
 func onground_movement(delta: float) -> void:
 	reset_jumps()
-	var jumping = Input.is_action_just_pressed("ui_accept")
+	var jumping = Input.is_action_just_pressed("jump")
 	if jumping:
 		jump()
 	if not horizontal_move():
@@ -55,7 +55,7 @@ func onground_movement(delta: float) -> void:
 	
 func in_air_movement(delta: float) -> void:
 	velocity.y += gravity * delta
-	var jumping = Input.is_action_just_pressed("ui_accept")
+	var jumping = Input.is_action_just_pressed("jump")
 	if jumping:
 		jump()
 	horizontal_move()
