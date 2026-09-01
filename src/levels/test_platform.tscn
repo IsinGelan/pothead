@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ivxc45l20cfa"]
 
-[ext_resource type="PackedScene" uid="uid://bkv0mgw1spm67" path="res://src/gameplay/player/player.tscn" id="1_ax7b2"]
+[ext_resource type="PackedScene" uid="uid://bkv0mgw1spm67" path="res://src/scenes/player.tscn" id="1_ax7b2"]
 [ext_resource type="Script" uid="uid://dy2spgty8a0vp" path="res://src/scripts/level_manager.gd" id="1_px2c1"]
 [ext_resource type="Texture2D" uid="uid://yxp5t0jdp5xy" path="res://assets/art/thumb-1920-1069903.jpg" id="2_63kum"]
 [ext_resource type="PackedScene" uid="uid://dj682x52fajfw" path="res://src/scenes/world_border.tscn" id="3_35b68"]
@@ -12,6 +12,9 @@
 [node name="LevelManager" type="Node" parent="." unique_id=1270821704]
 unique_name_in_owner = true
 script = ExtResource("1_px2c1")
+
+[node name="DeathTimer" type="Timer" parent="LevelManager" unique_id=1744922067]
+one_shot = true
 
 [node name="Background" type="Sprite2D" parent="." unique_id=19544024]
 show_behind_parent = true
@@ -68,3 +71,5 @@ position = Vector2(520, 85)
 
 [node name="GenericDamageSource4" parent="." unique_id=2104510612 instance=ExtResource("5_xfb1q")]
 position = Vector2(228, 271)
+
+[connection signal="timeout" from="LevelManager/DeathTimer" to="LevelManager" method="_on_death_timer_timeout"]

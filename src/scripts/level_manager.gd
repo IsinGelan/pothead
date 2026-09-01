@@ -11,8 +11,11 @@ extends Node
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
 	#pass
-	
+
+
 @export var player_init_hp: int = 100
+
+@onready var death_timer = $DeathTimer
 
 var player_hp: int = player_init_hp
 
@@ -24,10 +27,17 @@ func player_take_damage(hp_amount: int):
 		
 func player_die():
 	print("YOU DIED :(")
-	get_tree().reload_current_scene()
+	death_timer.start()
+
+
+func _on_death_timer_timeout() -> void:
+#	Falscher Funktionsname
+	print("Banana")
 	player_respawn()
 
 func player_respawn():
 	print("YOU RESPAWNED +++")
+	get_tree().reload_current_scene()
 	player_hp = player_init_hp
+	
 	
