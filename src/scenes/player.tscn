@@ -1,20 +1,20 @@
 [gd_scene format=3 uid="uid://bkv0mgw1spm67"]
 
 [ext_resource type="Script" uid="uid://bgc6dde1blqvj" path="res://src/scripts/player.gd" id="1_64h4j"]
-[ext_resource type="Texture2D" uid="uid://1qwy8etcr3wb" path="res://assets/art/cuphead-animation-video-game-cartoon-colorful-run.jpg" id="2_64h4j"]
+[ext_resource type="Texture2D" uid="uid://b43w6p1y04fpn" path="res://assets/textures/pot.png" id="2_v4rts"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iye4x"]
-size = Vector2(83, 89)
+size = Vector2(70, 89)
 
 [node name="Player" type="CharacterBody2D" unique_id=1733208926]
-position = Vector2(396, 232)
 collision_layer = 2
 script = ExtResource("1_64h4j")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2759384]
-position = Vector2(-1, 1)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_64h4j")
+position = Vector2(2.499998, -37.594543)
+scale = Vector2(0.1961259, 0.19612588)
+texture = ExtResource("2_v4rts")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1190911537]
+position = Vector2(2, -5.5)
 shape = SubResource("RectangleShape2D_iye4x")
