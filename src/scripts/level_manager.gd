@@ -13,14 +13,15 @@ extends Node
 	#pass
 
 
-@export var player_init_hp: int = 100
+@export var player_init_hp: int = 5
 
 @onready var death_timer = $DeathTimer
-
+@onready var UI = %UI
 var player_hp: int = player_init_hp
 
 func player_take_damage(hp_amount: int):
 	player_hp -= hp_amount
+	UI.set_hearts(player_hp)
 	print("Your HP are:", player_hp)
 	if player_hp <= 0:
 		player_die()

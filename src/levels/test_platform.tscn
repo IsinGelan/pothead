@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://dj682x52fajfw" path="res://src/scenes/world_border.tscn" id="3_35b68"]
 [ext_resource type="PackedScene" uid="uid://ddabe1wgvcxng" path="res://src/scenes/color_platform.tscn" id="4_bjp2j"]
 [ext_resource type="PackedScene" uid="uid://bupfejwadh1re" path="res://src/scenes/generic_damage_source.tscn" id="5_xfb1q"]
+[ext_resource type="PackedScene" uid="uid://bo72rhieyaxiu" path="res://src/UI stuff/UI.tscn" id="7_kmmq7"]
+[ext_resource type="PackedScene" uid="uid://bryk57vysampb" path="res://src/UI stuff/Lebensanzeige.tscn" id="8_pqomo"]
+[ext_resource type="PackedScene" uid="uid://bs5u2rgk5lapr" path="res://src/UI stuff/Heart.tscn" id="9_7wxns"]
 
 [node name="Level" type="Node2D" unique_id=469839150]
 
@@ -71,5 +74,13 @@ position = Vector2(520, 85)
 
 [node name="GenericDamageSource4" parent="." unique_id=2104510612 instance=ExtResource("5_xfb1q")]
 position = Vector2(228, 271)
+
+[node name="UI" parent="." unique_id=931882061 instance=ExtResource("7_kmmq7")]
+unique_name_in_owner = true
+
+[node name="Lebensanzeige" parent="UI" unique_id=398183269 instance=ExtResource("8_pqomo")]
+visible = false
+
+[node name="hertz" parent="UI/Lebensanzeige" unique_id=1034879528 instance=ExtResource("9_7wxns")]
 
 [connection signal="timeout" from="LevelManager/DeathTimer" to="LevelManager" method="_on_death_timer_timeout"]

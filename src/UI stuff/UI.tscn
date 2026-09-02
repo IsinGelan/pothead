@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bo72rhieyaxiu"]
+
+[ext_resource type="PackedScene" uid="uid://bryk57vysampb" path="res://src/UI stuff/Lebensanzeige.tscn" id="1_oaaid"]
+[ext_resource type="Script" uid="uid://d130vgdkcpc5t" path="res://src/UI stuff/ui.gd" id="1_pxtnm"]
+
+[node name="Node2D" type="Node2D" unique_id=931882061]
+script = ExtResource("1_pxtnm")
+
+[node name="Health-Bar" parent="." unique_id=398183269 instance=ExtResource("1_oaaid")]
+scale = Vector2(0.1, 0.1)
+script = null

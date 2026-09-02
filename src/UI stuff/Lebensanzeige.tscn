@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bryk57vysampb"]
+
+[ext_resource type="Script" uid="uid://dad7t2dtuuqvl" path="res://src/UI stuff/lebensanzeige.gd" id="1_26vq5"]
+[ext_resource type="Texture2D" uid="uid://byf6nuvg2fxln" path="res://assets/Mugman-PNG-Photo.png" id="1_w5140"]
+
+[node name="Container" type="Control" unique_id=532839456]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 20.0
+scale = Vector2(1.053, 1)
+script = ExtResource("1_26vq5")
+
+[node name="bar" type="HBoxContainer" parent="." unique_id=1705679602]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="node" type="Node2D" parent="." unique_id=578246898]
+
+[node name="Heart" type="TextureRect" parent="node" unique_id=598939514]
+offset_right = 975.0
+offset_bottom = 903.0
+texture = ExtResource("1_w5140")
