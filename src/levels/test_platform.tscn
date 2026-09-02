@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dj682x52fajfw" path="res://src/scenes/world_border.tscn" id="3_35b68"]
 [ext_resource type="PackedScene" uid="uid://ddabe1wgvcxng" path="res://src/scenes/color_platform.tscn" id="4_bjp2j"]
 [ext_resource type="PackedScene" uid="uid://bupfejwadh1re" path="res://src/scenes/generic_damage_source.tscn" id="5_xfb1q"]
+[ext_resource type="Script" uid="uid://ddhvqfrf7vyda" path="res://src/scripts/crosshair.gd" id="7_kmmq7"]
+[ext_resource type="Script" uid="uid://ddpw73wwgoq84" path="res://src/scripts/projectiles.gd" id="8_y50h5"]
 
 [node name="Level" type="Node2D" unique_id=469839150]
 
@@ -71,5 +73,12 @@ position = Vector2(520, 85)
 
 [node name="GenericDamageSource4" parent="." unique_id=2104510612 instance=ExtResource("5_xfb1q")]
 position = Vector2(228, 271)
+
+[node name="Crosshair" type="Node" parent="." unique_id=842500883]
+script = ExtResource("7_kmmq7")
+
+[node name="Projectiles" type="Node" parent="." unique_id=181400810]
+unique_name_in_owner = true
+script = ExtResource("8_y50h5")
 
 [connection signal="timeout" from="LevelManager/DeathTimer" to="LevelManager" method="_on_death_timer_timeout"]

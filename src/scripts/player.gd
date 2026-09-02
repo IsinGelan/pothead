@@ -7,6 +7,9 @@ class_name Player  # This makes "Player" a recognized type
 @export var onground_slowdown_steps: int = 2
 @export var max_jumps: int = 4;
 
+@onready var projectile_scene = %Projectiles
+
+# ================================
 var jumps_remaining: int = max_jumps;
 
 func _init() -> void:
@@ -60,3 +63,11 @@ func in_air_movement(delta: float) -> void:
 		jump()
 	horizontal_move()
 	
+# ================================
+# Shooting
+func _input(event):
+	if event.is_action_pressed("shoot"):
+		shoot()
+
+func shoot():
+	projectile_scene.shoot(self)
