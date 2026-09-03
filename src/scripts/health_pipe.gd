@@ -14,7 +14,6 @@ func _on_ready():
 	set_water_level(10)
 
 func set_water_level(to: int):
-	print("to", to)
 	var width_after: float = to*section_width
 	water.region_rect = Rect2(
 		0,

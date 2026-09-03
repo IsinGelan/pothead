@@ -13,10 +13,11 @@ script = ExtResource("1_jmypp")
 texture = ExtResource("2_jhp3c")
 
 [node name="Water" type="Sprite2D" parent="." unique_id=1582314662]
+position = Vector2(-1.9073486e-06, 0)
 texture = ExtResource("3_hyhmc")
 
 [node name="Front" type="Sprite2D" parent="." unique_id=194565536]
-position = Vector2(-1, 0)
+position = Vector2(-1.4210855e-14, 0)
 texture = ExtResource("4_y05gg")
 
 [connection signal="ready" from="." to="." method="_on_ready"]
