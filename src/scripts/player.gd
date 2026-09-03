@@ -8,12 +8,15 @@ class_name Player  # This makes "Player" a recognized type
 @export var max_jumps: int = 4;
 
 @onready var projectile_scene = %Projectiles
+@onready var level_manager = %LevelManager
 
 # ================================
 var jumps_remaining: int = max_jumps;
 
+#func _on_collision_shape_2d_ready() -> void:
+	#level_manager.register_player(self)
+
 func _init() -> void:
-	print("Bing!")
 	assert(onground_slowdown_steps > 0, "Onground Slowdown Steps must be > 0!")
 
 func _physics_process(delta: float) -> void:

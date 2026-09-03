@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://ddpw73wwgoq84" path="res://src/scripts/projectiles.gd" id="8_y50h5"]
 [ext_resource type="Script" uid="uid://d2slqak5bao0f" path="res://src/scripts/hud.gd" id="9_7wxns"]
 [ext_resource type="PackedScene" uid="uid://ib2xmk04ha2m" path="res://src/scenes/health_pipe.tscn" id="9_pqomo"]
+[ext_resource type="PackedScene" uid="uid://471ag3w2oeiq" path="res://src/scenes/hearts_bar.tscn" id="10_a4kgg"]
 
 [node name="Level" type="Node2D" unique_id=469839150]
 
@@ -87,7 +88,10 @@ script = ExtResource("8_y50h5")
 unique_name_in_owner = true
 script = ExtResource("9_7wxns")
 
+[node name="HeartsBar" parent="Hud" unique_id=1695723111 instance=ExtResource("10_a4kgg")]
+position = Vector2(1064, 586)
+
 [node name="HealthPipe" parent="Hud" unique_id=1545884428 instance=ExtResource("9_pqomo")]
-position = Vector2(925.99994, 38)
+position = Vector2(912.99994, 36.999985)
 
 [connection signal="timeout" from="LevelManager/DeathTimer" to="LevelManager" method="_on_death_timer_timeout"]
