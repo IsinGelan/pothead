@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://ivxc45l20cfa"]
+
+[ext_resource type="PackedScene" uid="uid://bkv0mgw1spm67" path="res://src/scenes/player.tscn" id="1_ax7b2"]
+[ext_resource type="Script" uid="uid://dy2spgty8a0vp" path="res://src/scripts/level_manager.gd" id="1_px2c1"]
+[ext_resource type="Texture2D" uid="uid://yxp5t0jdp5xy" path="res://assets/art/thumb-1920-1069903.jpg" id="2_63kum"]
+[ext_resource type="PackedScene" uid="uid://dj682x52fajfw" path="res://src/scenes/world_border.tscn" id="3_35b68"]
+[ext_resource type="PackedScene" uid="uid://ddabe1wgvcxng" path="res://src/scenes/color_platform.tscn" id="4_bjp2j"]
+[ext_resource type="PackedScene" uid="uid://bupfejwadh1re" path="res://src/scenes/generic_damage_source.tscn" id="5_xfb1q"]
+[ext_resource type="Script" uid="uid://ddhvqfrf7vyda" path="res://src/scripts/crosshair.gd" id="7_kmmq7"]
+[ext_resource type="Script" uid="uid://ddpw73wwgoq84" path="res://src/scripts/projectiles.gd" id="8_y50h5"]
+[ext_resource type="Script" uid="uid://d2slqak5bao0f" path="res://src/scripts/hud.gd" id="9_7wxns"]
+[ext_resource type="PackedScene" uid="uid://ib2xmk04ha2m" path="res://src/scenes/health_pipe.tscn" id="9_pqomo"]
+[ext_resource type="PackedScene" uid="uid://471ag3w2oeiq" path="res://src/scenes/hearts_bar.tscn" id="10_a4kgg"]
+
+[node name="Level" type="Node2D" unique_id=469839150]
+
+[node name="LevelManager" type="Node" parent="." unique_id=1270821704]
+unique_name_in_owner = true
+script = ExtResource("1_px2c1")
+
+[node name="DeathTimer" type="Timer" parent="LevelManager" unique_id=1744922067]
+one_shot = true
+
+[node name="Background" type="Sprite2D" parent="." unique_id=19544024]
+show_behind_parent = true
+position = Vector2(573, 332)
+scale = Vector2(0.60052085, 0.612037)
+texture = ExtResource("2_63kum")
+
+[node name="Camera2D" type="Camera2D" parent="Background" unique_id=2125355240]
+
+[node name="WorldBorder" parent="." unique_id=891235833 instance=ExtResource("3_35b68")]
+position = Vector2(-2, 513)
+rotation = 1.5707964
+
+[node name="WorldBorder3" parent="." unique_id=1881134863 instance=ExtResource("3_35b68")]
+position = Vector2(572, 660)
+
+[node name="WorldBorder2" parent="." unique_id=631466837 instance=ExtResource("3_35b68")]
+position = Vector2(1150, 557)
+rotation = -1.5707964
+
+[node name="ColorPlatform" parent="." unique_id=1476390106 instance=ExtResource("4_bjp2j")]
+position = Vector2(314, 576)
+
+[node name="ColorPlatform6" parent="." unique_id=1591068807 instance=ExtResource("4_bjp2j")]
+position = Vector2(662, 577)
+
+[node name="ColorPlatform3" parent="." unique_id=192868449 instance=ExtResource("4_bjp2j")]
+position = Vector2(897, 442)
+
+[node name="ColorPlatform5" parent="." unique_id=1007114468 instance=ExtResource("4_bjp2j")]
+position = Vector2(470, 268)
+
+[node name="ColorPlatform7" parent="." unique_id=1935895628 instance=ExtResource("4_bjp2j")]
+position = Vector2(18, 184)
+
+[node name="ColorPlatform2" parent="." unique_id=654841547 instance=ExtResource("4_bjp2j")]
+position = Vector2(47, 499)
+
+[node name="Player" parent="." unique_id=1101448845 instance=ExtResource("1_ax7b2")]
+position = Vector2(472, 525)
+jump_speed = -650.0
+gravity = 1500.0
+onground_slowdown_steps = 10
+max_jumps = 2
+
+[node name="GenericDamageSource" parent="." unique_id=2058733350 instance=ExtResource("5_xfb1q")]
+position = Vector2(601, 595)
+
+[node name="GenericDamageSource2" parent="." unique_id=1365261059 instance=ExtResource("5_xfb1q")]
+position = Vector2(732, 355)
+
+[node name="GenericDamageSource3" parent="." unique_id=1520710491 instance=ExtResource("5_xfb1q")]
+position = Vector2(520, 85)
+
+[node name="GenericDamageSource4" parent="." unique_id=2104510612 instance=ExtResource("5_xfb1q")]
+position = Vector2(228, 271)
+
+[node name="Crosshair" type="Node" parent="." unique_id=842500883]
+script = ExtResource("7_kmmq7")
+
+[node name="Projectiles" type="Node" parent="." unique_id=181400810]
+unique_name_in_owner = true
+script = ExtResource("8_y50h5")
+
+[node name="Hud" type="Node" parent="." unique_id=508049806]
+unique_name_in_owner = true
+script = ExtResource("9_7wxns")
+
+[node name="HeartsBar" parent="Hud" unique_id=1695723111 instance=ExtResource("10_a4kgg")]
+position = Vector2(1064, 586)
+
+[node name="HealthPipe" parent="Hud" unique_id=1545884428 instance=ExtResource("9_pqomo")]
+position = Vector2(912.99994, 36.999985)
+
+[connection signal="timeout" from="LevelManager/DeathTimer" to="LevelManager" method="_on_death_timer_timeout"]
