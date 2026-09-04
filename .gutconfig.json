@@ -1,7 +1,7 @@
 {
 	"dirs": [
-        "res://src/tests/"
+		"res://src/tests/"
 	],
 	"include_subdirs": true,
-	"should_exit": true
+ 	"should_exit": true
 }
