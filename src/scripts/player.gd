@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player  # This makes "Player" a recognized type
 
 @export var horizontal_speed: float = 300.0
+@export var crouch_speed: float = 150.0
 @export var jump_speed: float = -600.0
 @export var gravity: float = 980.0
 @export var onground_slowdown_steps: int = 2

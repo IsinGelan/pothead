@@ -24,7 +24,8 @@ func _on_body_entered(body: Node2D) -> void:
 	var bang = bang_scene.instantiate()
 	bang.global_position = position
 	projectiles.add_child(bang)
-	print("Hit", body.name)
+	
+	# TODO: apply damage
 	
 	queue_free()
 	
