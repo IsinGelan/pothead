@@ -10,24 +10,24 @@ size = Vector2(70, 89)
 collision_layer = 2
 script = ExtResource("1_64h4j")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=235936181]
-position = Vector2(0.4999981, -77.25546)
-scale = Vector2(0.1961259, 0.19612588)
-texture = ExtResource("2_v4rts")
-
 [node name="cSprite2D" type="Sprite2D" parent="." unique_id=830040059]
-position = Vector2(1.7763568e-15, -39.000004)
+position = Vector2(0.473999, 6.9999924)
 scale = Vector2(0.196, 0.098)
 texture = ExtResource("2_v4rts")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1190911537]
-position = Vector2(0, -45.16092)
-shape = SubResource("RectangleShape2D_iye4x")
-
 [node name="cCollision" type="CollisionShape2D" parent="." unique_id=1289359457]
-position = Vector2(0, -22)
+position = Vector2(0.47399902, 24)
 scale = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_iye4x")
 
-[connection signal="ready" from="CollisionShape2D" to="." method="_on_collision_shape_2d_ready"]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=235936181]
+position = Vector2(0.9739971, -31.255463)
+scale = Vector2(0.1961259, 0.19612588)
+texture = ExtResource("2_v4rts")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1190911537]
+position = Vector2(0.47399902, 0.8390808)
+shape = SubResource("RectangleShape2D_iye4x")
+
 [connection signal="ready" from="cCollision" to="." method="_on_collision_shape_2d_ready"]
+[connection signal="ready" from="CollisionShape2D" to="." method="_on_collision_shape_2d_ready"]
