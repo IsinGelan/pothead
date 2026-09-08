@@ -46,7 +46,7 @@ func test_projectile_spawns_at_player_position() -> void:
 func test_projectile_flies_towards_aim_direction() -> void:
 	player.position = Vector2.ZERO
 	player.set_global_mouse_position(Vector2(100, 0))
-
+	
 	projectiles.shoot(player)
 
 	var projectile = projectiles.get_child(projectiles.get_child_count() - 1)

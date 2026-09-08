@@ -11,6 +11,8 @@ class_name Player  # This makes "Player" a recognized type
 @onready var projectile_scene = %Projectiles
 @onready var level_manager = %LevelManager
 
+
+
 # ================================
 var jumps_remaining: int = max_jumps;
 
@@ -19,13 +21,18 @@ var jumps_remaining: int = max_jumps;
 
 func _init() -> void:
 	assert(onground_slowdown_steps > 0, "Onground Slowdown Steps must be > 0!")
+	Input.action_press("crouch")
+	Input.action_release("crouch")
 
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		onground_movement(delta)
 	else:
 		in_air_movement(delta)
-	
+	if Input.is_action_pressed("crouch"):
+		crouch()
+	elif Input.is_action_just_released("crouch"):
+		uncrouch()
 	move_and_slide()
 
 # ================================
@@ -43,7 +50,10 @@ func horizontal_move() -> bool:
 	# returns whether player got movement input
 	var key_pressed_direction = Input.get_axis("walk left", "walk right")
 	if key_pressed_direction:
-		velocity.x = key_pressed_direction * horizontal_speed
+		if Input.is_action_pressed("crouch"):
+			velocity.x = key_pressed_direction * crouch_speed
+		else:
+			velocity.x = key_pressed_direction * horizontal_speed
 		return true
 	return false
 
@@ -75,3 +85,20 @@ func _input(event):
 
 func shoot():
 	projectile_scene.shoot(self)
+
+#==================================
+#Crouching visuals and hitbox
+
+func crouch():
+	$Sprite2D.visible = false
+	$cSprite2D.visible = true
+	$CollisionShape2D.set_deferred("disabled", true)
+	$cCollision.set_deferred("disabled", false)
+
+func uncrouch():
+	velocity.y += -200
+	$Sprite2D.visible = true
+	$cSprite2D.visible = false
+	$CollisionShape2D.set_deferred("disabled", false)
+	$cCollision.set_deferred("disabled", true)
+	
