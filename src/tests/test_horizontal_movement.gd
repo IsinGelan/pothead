@@ -2,10 +2,10 @@ extends GutTest
 
 
 var player: Player
-
+const PLAYER_SCENE = preload("res://src/scenes/player.tscn")
 
 func before_each() -> void:
-	player = Player.new()
+	player = PLAYER_SCENE.instantiate()
 	add_child_autofree(player)
 
 

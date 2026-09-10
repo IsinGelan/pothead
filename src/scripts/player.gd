@@ -8,9 +8,13 @@ class_name Player  # This makes "Player" a recognized type
 @export var onground_slowdown_steps: int = 2
 @export var max_jumps: int = 4;
 
-@onready var projectile_scene = get_node_or_null("%Projectile") 
+@onready var projectile_scene = get_node_or_null("%Projectiles") 
 @onready var level_manager = get_node_or_null("%LevelManager")
 
+@onready var sprite_standing = get_node_or_null("Sprite2D")
+@onready var sprite_crouch = get_node_or_null("cSprite2D")
+@onready var collision_standing = get_node_or_null("CollisionShape2D")
+@onready var collision_crouch = get_node_or_null("cCollision")
 
 
 # ================================
@@ -21,8 +25,6 @@ var jumps_remaining: int = max_jumps;
 
 func _init() -> void:
 	assert(onground_slowdown_steps > 0, "Onground Slowdown Steps must be > 0!")
-	Input.action_press("crouch")
-	Input.action_release("crouch")
 
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
@@ -50,10 +52,10 @@ func horizontal_move() -> bool:
 	# returns whether player got movement input
 	var key_pressed_direction = Input.get_axis("walk left", "walk right")
 	if key_pressed_direction:
-		if Input.is_action_pressed("crouch"):
-			velocity.x = key_pressed_direction * crouch_speed
-		else:
-			velocity.x = key_pressed_direction * horizontal_speed
+		# Prüfe, ob der Spieler gerade duckt
+		var current_speed = crouch_speed if Input.is_action_pressed("crouch") else horizontal_speed
+		
+		velocity.x = key_pressed_direction * current_speed
 		return true
 	return false
 
@@ -84,21 +86,30 @@ func _input(event):
 		shoot()
 
 func shoot():
-	projectile_scene.shoot(self)
+	if projectile_scene:
+		projectile_scene.shoot(self)
 
 #==================================
 #Crouching visuals and hitbox
 
 func crouch():
-	$Sprite2D.visible = false
-	$cSprite2D.visible = true
-	$CollisionShape2D.set_deferred("disabled", true)
-	$cCollision.set_deferred("disabled", false)
+	if sprite_standing:
+		sprite_standing.visible = false
+	if sprite_crouch:
+		sprite_crouch.visible = true
+	if collision_standing:
+		collision_standing.set_deferred("disabled", true)
+	if collision_crouch:
+		collision_crouch.set_deferred("disabled", false)
 
 func uncrouch():
 	velocity.y += -200
-	$Sprite2D.visible = true
-	$cSprite2D.visible = false
-	$CollisionShape2D.set_deferred("disabled", false)
-	$cCollision.set_deferred("disabled", true)
+	if sprite_standing:
+		sprite_standing.visible = true
+	if sprite_crouch:
+		sprite_crouch.visible = false
+	if collision_standing:
+		collision_standing.set_deferred("disabled", false)
+	if collision_crouch:
+		collision_crouch.set_deferred("disabled", true)
 	
