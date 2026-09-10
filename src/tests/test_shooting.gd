@@ -45,8 +45,14 @@ func test_projectile_spawns_at_player_position() -> void:
 
 func test_projectile_flies_towards_aim_direction() -> void:
 	player.position = Vector2.ZERO
+<<<<<<< Updated upstream
 	player.set_global_mouse_position(Vector2(100, 0))
 	
+=======
+	var aim_target = Vector2(100, 100) # Replace with your actual target coordinates
+	player.get_viewport().warp_mouse(aim_target)
+
+>>>>>>> Stashed changes
 	projectiles.shoot(player)
 
 	var projectile = projectiles.get_child(projectiles.get_child_count() - 1)

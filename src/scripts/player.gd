@@ -8,8 +8,8 @@ class_name Player  # This makes "Player" a recognized type
 @export var onground_slowdown_steps: int = 2
 @export var max_jumps: int = 4;
 
-@onready var projectile_scene = %Projectiles
-@onready var level_manager = %LevelManager
+@onready var projectile_scene = get_node_or_null("%Projectile") 
+@onready var level_manager = get_node_or_null("%LevelManager")
 
 
 
