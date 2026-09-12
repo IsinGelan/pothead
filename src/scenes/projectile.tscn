@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dagdufl6f8ncd"]
 
-[ext_resource type="Script" uid="uid://o2spi5nlde4k" path="res://src/scripts/projectile.gd" id="1_f30q2"]
+[ext_resource type="Script" uid="uid://8fekftyrjw28" path="res://src/scripts/Projectile.cs" id="1_f30q2"]
 [ext_resource type="Texture2D" uid="uid://cvqdd64q6atya" path="res://assets/textures/nuts.png" id="1_xtke2"]
 
 [sub_resource type="Animation" id="Animation_xtke2"]

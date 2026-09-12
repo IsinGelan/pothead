@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://ib2xmk04ha2m"]
 
-[ext_resource type="Script" uid="uid://b2juur2wits4u" path="res://src/scripts/health_pipe.gd" id="1_jmypp"]
-[ext_resource type="Texture2D" uid="uid://cmd7j855idxat" path="res://assets/textures/pipe_back.png" id="2_jhp3c"]
-[ext_resource type="Texture2D" uid="uid://bdq6caepts2wa" path="res://assets/textures/pipe_water.png" id="3_hyhmc"]
-[ext_resource type="Texture2D" uid="uid://0yid08gu3qc2" path="res://assets/textures/pipe_front.png" id="4_y05gg"]
+[ext_resource type="Script" uid="uid://b3jmytelohnhc" path="res://src/scripts/HealthPipe.cs" id="1_jmypp"]
+[ext_resource type="Texture2D" uid="uid://bxqjsibb3jmqt" path="res://assets/textures/pipe_back.png" id="2_jhp3c"]
+[ext_resource type="Texture2D" uid="uid://buyyq1rssmv4u" path="res://assets/textures/pipe_water.png" id="3_hyhmc"]
+[ext_resource type="Texture2D" uid="uid://uoron8oq6erf" path="res://assets/textures/pipe_front.png" id="4_y05gg"]
 
 [node name="HealthPipe" type="Node2D" unique_id=1545884428]
 scale = Vector2(0.55999863, 0.55999863)

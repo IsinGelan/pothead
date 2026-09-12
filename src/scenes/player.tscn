@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bkv0mgw1spm67"]
 
-[ext_resource type="Script" uid="uid://bgc6dde1blqvj" path="res://src/scripts/player.gd" id="1_64h4j"]
+[ext_resource type="Script" uid="uid://56hagq8cn8rx" path="res://src/scripts/Player.cs" id="1_v4rts"]
 [ext_resource type="Texture2D" uid="uid://b43w6p1y04fpn" path="res://assets/textures/pot.png" id="2_v4rts"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iye4x"]
@@ -8,7 +8,7 @@ size = Vector2(70, 89)
 
 [node name="Player" type="CharacterBody2D" unique_id=1733208926]
 collision_layer = 2
-script = ExtResource("1_64h4j")
+script = ExtResource("1_v4rts")
 
 [node name="cSprite2D" type="Sprite2D" parent="." unique_id=830040059]
 position = Vector2(0.473999, 6.9999924)

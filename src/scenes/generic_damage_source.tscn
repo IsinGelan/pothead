@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bupfejwadh1re"]
 
-[ext_resource type="Script" uid="uid://bleliovxav408" path="res://src/scripts/generic_damage_source.gd" id="1_716ch"]
+[ext_resource type="Script" uid="uid://m1dw8xopeu5j" path="res://src/scripts/GenericDamageSource.cs" id="1_716ch"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_82j1l"]
 radius = 29.017237

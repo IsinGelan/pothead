@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://471ag3w2oeiq"]
 
 [ext_resource type="PackedScene" uid="uid://bu18a54dj0iq5" path="res://src/scenes/heart.tscn" id="1_blgy2"]
-[ext_resource type="Script" uid="uid://uc62a1w2ntua" path="res://src/scripts/hearts_bar.gd" id="1_k2p5y"]
+[ext_resource type="Script" uid="uid://b6c8vwjnq5np3" path="res://src/scripts/HeartsBar.cs" id="1_k2p5y"]
 
 [node name="HeartsBar" type="Node2D" unique_id=1695723111]
 script = ExtResource("1_k2p5y")

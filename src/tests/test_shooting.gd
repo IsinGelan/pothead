@@ -1,29 +1,25 @@
 extends GutTest
 
-
-var projectiles: Node
+var level_scene: Node2D
+var projectiles_scene: Node
 var player: Player
 
 
 func before_each() -> void:
-	projectiles = Node.new()
-	projectiles.set_script(preload("res://src/scripts/projectiles.gd"))
-
-	add_child_autofree(projectiles)
-
-	player = Player.new()
-	add_child_autofree(player)
-
-	await get_tree().process_frame
-
+	var l_scene = load("res://src/levels/test_platform.tscn").instantiate()
+	level_scene = add_child_autofree(level_scene)
+	assert_not_null(level_scene)
+	
+	player = level_scene.get_node("Player")
+	projectiles_scene = level_scene.get_node("Projectiles")
 
 func test_shoot_spawns_projectile() -> void:
-	var projectile_count_before := projectiles.get_child_count()
+	var projectile_count_before := projectiles_scene.get_child_count()
 
-	projectiles.shoot(player)
+	projectiles_scene.shoot(player)
 
 	assert_eq(
-		projectiles.get_child_count(),
+		projectiles_scene.get_child_count(),
 		projectile_count_before + 1,
 		"Schießen sollte genau ein Geschoss erzeugen."
 	)
@@ -32,9 +28,9 @@ func test_shoot_spawns_projectile() -> void:
 func test_projectile_spawns_at_player_position() -> void:
 	player.position = Vector2(100, 200)
 
-	projectiles.shoot(player)
+	projectiles_scene.shoot(player)
 
-	var projectile = projectiles.get_child(projectiles.get_child_count() - 1)
+	var projectile = projectiles_scene.get_child(projectiles_scene.get_child_count() - 1)
 
 	assert_eq(
 		projectile.global_position,
@@ -47,9 +43,9 @@ func test_projectile_flies_towards_aim_direction() -> void:
 	player.position = Vector2.ZERO
 	player.set_global_mouse_position(Vector2(100, 0))
 	
-	projectiles.shoot(player)
+	projectiles_scene.shoot(player)
 
-	var projectile = projectiles.get_child(projectiles.get_child_count() - 1)
+	var projectile = projectiles_scene.get_child(projectiles_scene.get_child_count() - 1)
 
 	assert_eq(
 		projectile.direction,

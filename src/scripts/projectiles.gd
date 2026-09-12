@@ -13,5 +13,4 @@ func shoot(as_player: Player):
 	projectile.global_position = as_player.position
 	projectile.shoot(direction)
 
-	#get_tree().current_scene.add_child(projectile)
 	projectiles.add_child(projectile)
