@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://dagdufl6f8ncd"]
+
+[ext_resource type="Script" uid="uid://o2spi5nlde4k" path="res://src/scripts/projectile.gd" id="1_f30q2"]
+[ext_resource type="Texture2D" uid="uid://cvqdd64q6atya" path="res://assets/textures/nuts.png" id="1_xtke2"]
+
+[sub_resource type="Animation" id="Animation_xtke2"]
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.2831855]
+}
+
+[sub_resource type="Animation" id="Animation_f30q2"]
+resource_name = "turning"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j5ifx"]
+_data = {
+&"RESET": SubResource("Animation_xtke2"),
+&"turning": SubResource("Animation_f30q2")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_82j1l"]
+radius = 12.0
+
+[node name="Projectile" type="Area2D" unique_id=216815955]
+collision_layer = 4
+collision_mask = 13
+script = ExtResource("1_f30q2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=623693221]
+position = Vector2(7.249939, 10.249939)
+scale = Vector2(0.021728458, 0.021728458)
+texture = ExtResource("1_xtke2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=2033480203]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_j5ifx")
+autoplay = &"RESET"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=700889340]
+position = Vector2(8.249939, 13.249939)
+shape = SubResource("CircleShape2D_82j1l")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://471ag3w2oeiq"]
+
+[ext_resource type="PackedScene" uid="uid://bu18a54dj0iq5" path="res://src/scenes/heart.tscn" id="1_blgy2"]
+[ext_resource type="Script" uid="uid://uc62a1w2ntua" path="res://src/scripts/hearts_bar.gd" id="1_k2p5y"]
+
+[node name="HeartsBar" type="Node2D" unique_id=1695723111]
+script = ExtResource("1_k2p5y")
+
+[node name="Heart1" parent="." unique_id=1088459342 instance=ExtResource("1_blgy2")]
+position = Vector2(0, -28)
+
+[node name="Heart2" parent="." unique_id=452559123 instance=ExtResource("1_blgy2")]
+position = Vector2(-26.000002, 15)
+rotation = -2.0943952
+
+[node name="Heart3" parent="." unique_id=243081551 instance=ExtResource("1_blgy2")]
+position = Vector2(24, 15.999998)
+rotation = 2.0943952

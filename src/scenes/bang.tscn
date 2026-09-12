@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dc82bdfg8fpmx"]
+
+[ext_resource type="Texture2D" uid="uid://dd0cxq5fgxlnu" path="res://assets/textures/bang.png" id="1_ssmvk"]
+[ext_resource type="Script" uid="uid://pnva8lawgg7" path="res://src/scripts/bang.gd" id="2_e0ywf"]
+
+[node name="Bang" type="Sprite2D" unique_id=1220627088]
+scale = Vector2(0.22351885, 0.22351885)
+texture = ExtResource("1_ssmvk")
+script = ExtResource("2_e0ywf")
+
+[connection signal="ready" from="." to="." method="_on_ready"]
