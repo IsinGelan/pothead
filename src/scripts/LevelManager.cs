@@ -3,89 +3,89 @@ using Godot;
 
 public partial class LevelManager : Node
 {
-    [Export]
-    public int PlayerInitHp { get; set; } = 100;
+	[Export]
+	public int PlayerInitHp { get; set; } = 100;
 
-    private const int PlayerInitLives = 3;
+	private const int PlayerInitLives = 3;
 
-    // %Hud — requires a unique node named "Hud" in the scene.
-    [Export]
-    private Hud levelHud;
+	// %Hud — requires a unique node named "Hud" in the scene.
+	[Export]
+	private Hud levelHud;
 
-    // $DeathTimer
-    [Export]
-    private Timer deathTimer;
+	// $DeathTimer
+	[Export]
+	private Timer deathTimer;
 
-    private int playerHp;
-    private int playerLives = PlayerInitLives;
+	private int playerHp;
+	private int playerLives = PlayerInitLives;
 
-    private Player myPlayer;
-
-
-    public override void _Ready()
-    {
-        playerHp = PlayerInitHp;
-
-        // If you don't want these as [Export] fields, you can instead use:
-        // levelHud = GetNode("Hud");
-        // deathTimer = GetNode<Timer>("DeathTimer");
-
-        PlayerShowHp();
-    }
+	private Player myPlayer;
 
 
-    public void RegisterPlayer(Player player)
-    {
-        myPlayer = player;
-    }
+	public override void _Ready()
+	{
+		playerHp = PlayerInitHp;
+
+		// If you don't want these as [Export] fields, you can instead use:
+		// levelHud = GetNode("Hud");
+		// deathTimer = GetNode<Timer>("DeathTimer");
+
+		PlayerShowHp();
+	}
 
 
-    public void PlayerTakeDamage(int hpAmount)
-    {
-        playerHp -= hpAmount;
-        PlayerShowHp();
-
-        if (playerHp <= 0)
-        {
-            PlayerDie();
-        }
-    }
+	public void RegisterPlayer(Player player)
+	{
+		myPlayer = player;
+	}
 
 
-    public void PlayerShowHp()
-    {
-        // Assuming Hud is your own C# class with SetHealthWaterLevel().
-        levelHud.SetHealthWaterLevel((int)(playerHp / 10.0f));
-    }
+	public void PlayerTakeDamage(int hpAmount)
+	{
+		playerHp -= hpAmount;
+		PlayerShowHp();
+
+		if (playerHp <= 0)
+		{
+			PlayerDie();
+		}
+	}
 
 
-    public void PlayerDie()
-    {
-        playerLives -= 1;
-
-        // Assuming Hud is your own C# class with Die().
-        levelHud.Die(playerLives);
-
-        deathTimer.Start();
-    }
+	public void PlayerShowHp()
+	{
+		// Assuming Hud is your own C# class with SetHealthWaterLevel().
+		levelHud.SetHealthWaterLevel((int)(playerHp / 10.0f));
+	}
 
 
-    private void OnDeathTimerTimeout()
-    {
-        // Falscher Funktionsname
-        PlayerRespawn();
-    }
+	public void PlayerDie()
+	{
+		playerLives -= 1;
+
+		// Assuming Hud is your own C# class with Die().
+		levelHud.Die(playerLives);
+
+		deathTimer.Start();
+	}
 
 
-    public void PlayerRespawn()
-    {
-        GD.Print("YOU RESPAWNED +++");
+	private void OnDeathTimerTimeout()
+	{
+		// Falscher Funktionsname
+		PlayerRespawn();
+	}
 
-        GetTree().ReloadCurrentScene();
 
-        // myPlayer.ReloadCurrentScene();
+	public void PlayerRespawn()
+	{
+		GD.Print("YOU RESPAWNED +++");
 
-        PlayerShowHp();
-        playerHp = PlayerInitHp;
-    }
+		GetTree().ReloadCurrentScene();
+
+		// myPlayer.ReloadCurrentScene();
+
+		PlayerShowHp();
+		playerHp = PlayerInitHp;
+	}
 }

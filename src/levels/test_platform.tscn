@@ -60,10 +60,6 @@ position = Vector2(47, 499)
 
 [node name="Player" parent="." unique_id=1101448845 instance=ExtResource("1_ax7b2")]
 position = Vector2(471, 522)
-jump_speed = -650.0
-gravity = 1500.0
-onground_slowdown_steps = 10
-max_jumps = 2
 
 [node name="GenericDamageSource" parent="." unique_id=2058733350 instance=ExtResource("5_xfb1q")]
 position = Vector2(601, 595)
