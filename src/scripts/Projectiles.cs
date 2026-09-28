@@ -10,8 +10,8 @@ public partial class Projectiles : Node
     {
         var projectile = projectileScene.Instantiate();
 
-        var relPos = asPlayer.GetGlobalMousePosition() - asPlayer.GlobalPosition;
-        var direction = relPos.Normalized();
+        var relativePosition = asPlayer.GetGlobalMousePosition() - asPlayer.GlobalPosition;
+        var direction = relativePosition.Normalized();
 
         GD.Print(direction);
 

@@ -5,22 +5,22 @@ using System.Diagnostics;
 public partial class Player : CharacterBody2D
 {
     [Export]
-    public float HorizontalSpeed { get; set; } = 300.0f;
+    public float horizontalSpeed { get; set; } = 300.0f;
 
     [Export]
-    public float CrouchSpeed { get; set; } = 150.0f;
+    public float crouchSpeed { get; set; } = 150.0f;
 
     [Export]
-    public float JumpSpeed { get; set; } = -600.0f;
+    public float jumpSpeed { get; set; } = -600.0f;
 
     [Export]
-    public float Gravity { get; set; } = 980.0f;
+    public float gravity { get; set; } = 980.0f;
 
     [Export]
-    public int OngroundSlowdownSteps { get; set; } = 2;
+    public int ongroundSlowdownSteps { get; set; } = 2;
 
     [Export]
-    public int MaxJumps { get; set; } = 4;
+    public int maxJumps { get; set; } = 4;
 
 
     private Projectiles projectileScene;
@@ -37,7 +37,7 @@ public partial class Player : CharacterBody2D
         projectileScene = GetNode<Projectiles>("%Projectiles");
         levelManager = GetNode<LevelManager>("%LevelManager");
 
-        jumpsRemaining = MaxJumps;
+        jumpsRemaining = maxJumps;
 
         // Equivalent to:
         // level_manager.register_player(self)
@@ -50,7 +50,7 @@ public partial class Player : CharacterBody2D
     public override void _EnterTree()
     {
         // Equivalent to the GDScript _init() assertion.
-        Debug.Assert(OngroundSlowdownSteps > 0,
+        Debug.Assert(ongroundSlowdownSteps > 0,
             "Onground Slowdown Steps must be > 0!");
 
         Input.ActionPress("crouch");
@@ -92,7 +92,7 @@ public partial class Player : CharacterBody2D
 
     private void ResetJumps()
     {
-        jumpsRemaining = MaxJumps;
+        jumpsRemaining = maxJumps;
     }
 
 
@@ -103,7 +103,7 @@ public partial class Player : CharacterBody2D
             return;
         }
 
-        Velocity = new Vector2(Velocity.X, JumpSpeed);
+        Velocity = new Vector2(Velocity.X, jumpSpeed);
         jumpsRemaining--;
     }
 
@@ -120,14 +120,14 @@ public partial class Player : CharacterBody2D
             if (Input.IsActionPressed("crouch"))
             {
                 Velocity = new Vector2(
-                    keyPressedDirection * CrouchSpeed,
+                    keyPressedDirection * crouchSpeed,
                     Velocity.Y
                 );
             }
             else
             {
                 Velocity = new Vector2(
-                    keyPressedDirection * HorizontalSpeed,
+                    keyPressedDirection * horizontalSpeed,
                     Velocity.Y
                 );
             }
@@ -145,7 +145,7 @@ public partial class Player : CharacterBody2D
             Mathf.MoveToward(
                 Velocity.X,
                 0,
-                HorizontalSpeed / OngroundSlowdownSteps
+                horizontalSpeed / ongroundSlowdownSteps
             ),
             Velocity.Y
         );
@@ -177,7 +177,7 @@ public partial class Player : CharacterBody2D
     {
         Velocity = new Vector2(
             Velocity.X,
-            Velocity.Y + Gravity * delta
+            Velocity.Y + gravity * delta
         );
 
         bool jumping = Input.IsActionJustPressed("jump");

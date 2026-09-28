@@ -4,9 +4,9 @@ using Godot;
 public partial class LevelManager : Node
 {
     [Export]
-    public int PlayerInitHp { get; set; } = 100;
+    public int playerInitHp { get; set; } = 100;
 
-    private const int PlayerInitLives = 3;
+    private const int PLAYER_INIT_LIVES = 3;
 
     // %Hud — requires a unique node named "Hud" in the scene.
     [Export]
@@ -17,14 +17,14 @@ public partial class LevelManager : Node
     private Timer deathTimer;
 
     private int playerHp;
-    private int playerLives = PlayerInitLives;
+    private int playerLives = PLAYER_INIT_LIVES;
 
     private Player myPlayer;
 
 
     public override void _Ready()
     {
-        playerHp = PlayerInitHp;
+        playerHp = playerInitHp;
 
         // If you don't want these as [Export] fields, you can instead use:
         // levelHud = GetNode("Hud");
@@ -86,6 +86,6 @@ public partial class LevelManager : Node
         // myPlayer.ReloadCurrentScene();
 
         PlayerShowHp();
-        playerHp = PlayerInitHp;
+        playerHp = playerInitHp;
     }
 }

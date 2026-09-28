@@ -3,7 +3,7 @@ using Godot;
 public partial class GenericDamageSource : Area2D
 {
     [Export]
-    public int HpDealt { get; set; } = 17;
+    public int hpDealt { get; set; } = 17;
 
     private LevelManager _levelManager;
 
@@ -16,6 +16,6 @@ public partial class GenericDamageSource : Area2D
 
     private void OnBodyEntered(Node2D body)
     {
-        _levelManager.PlayerTakeDamage(HpDealt);
+        _levelManager.PlayerTakeDamage(hpDealt);
     }
 }
