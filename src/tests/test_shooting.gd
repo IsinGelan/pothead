@@ -7,7 +7,7 @@ var player: Player
 
 func before_each() -> void:
 	var l_scene = load("res://src/levels/test_platform.tscn").instantiate()
-	level_scene = add_child_autofree(level_scene)
+	level_scene = add_child_autofree(l_scene)
 	assert_not_null(level_scene)
 	
 	player = level_scene.get_node("Player")

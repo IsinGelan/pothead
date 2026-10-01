@@ -28,7 +28,7 @@ public partial class Player : CharacterBody2D
 	private Projectiles projectileScene;
 	private LevelManager levelManager;
 
-	private int jumpsRemaining;
+	public int jumpsRemaining;
 
 
 	// ================================
@@ -97,14 +97,14 @@ public partial class Player : CharacterBody2D
 	// Helpers
 
 
-    private void ResetJumps()
+    public void ResetJumps()
     {
         jumpsRemaining = maxJumps;
     }
 
 
 
-	private void Jump()
+	public void Jump()
 	{
 		if (jumpsRemaining == 0)
 		{

@@ -13,8 +13,8 @@ public partial class Projectile : Area2D
 	private PackedScene _bangScene =
 		GD.Load<PackedScene>("res://src/scenes/bang.tscn");
 
-	private Vector2 _direction = Vector2.Right;
-	private Vector2 _velocity = Vector2.Zero;
+	public Vector2 _direction = Vector2.Right;
+	public Vector2 _velocity = Vector2.Zero;
 
 	public override void _Ready()
 	{

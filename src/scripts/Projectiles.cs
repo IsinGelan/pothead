@@ -6,20 +6,24 @@ public partial class Projectiles : Node
         "res://src/scenes/projectile.tscn"
 	);
 
+	public Vector2 GetAimDirection(Player player)
+	{
+		var relativePosition =
+			player.GetGlobalMousePosition() -
+			player.GlobalPosition;
+
+		return relativePosition.Normalized();
+	}
+
 	public void Shoot(Player asPlayer)
 	{
-		var projectile = projectileScene.Instantiate();
-
-
-        var relativePosition = asPlayer.GetGlobalMousePosition() - asPlayer.GlobalPosition;
-        var direction = relativePosition.Normalized();
-
-
+        var direction = GetAimDirection(asPlayer);
 		GD.Print(direction);
 
-		((Projectile)projectile).GlobalPosition = asPlayer.GlobalPosition;
+		var projectile = (Projectile)projectileScene.Instantiate();
+		projectile.GlobalPosition = asPlayer.GlobalPosition;
 		// "Shoot" was spelled "shoot" causing the aiming not to work
-		projectile.Call("Shoot", direction);
+		projectile.Shoot(direction);
 
 		AddChild(projectile);
 	}
