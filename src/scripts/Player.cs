@@ -117,7 +117,7 @@ public partial class Player : CharacterBody2D
 
 
 
-	private bool HorizontalMove()
+	public bool HorizontalMove()
 	{
 		// Returns whether the player received movement input.
 
