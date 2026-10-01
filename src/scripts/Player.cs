@@ -5,23 +5,23 @@ using System.Diagnostics;
 public partial class Player : CharacterBody2D
 {
 
-    [Export]
-    public float horizontalSpeed { get; set; } = 300.0f;
+	[Export]
+	public float horizontalSpeed { get; set; } = 300.0f;
 
-    [Export]
-    public float crouchSpeed { get; set; } = 150.0f;
+	[Export]
+	public float crouchSpeed { get; set; } = 150.0f;
 
-    [Export]
-    public float jumpSpeed { get; set; } = -600.0f;
+	[Export]
+	public float jumpSpeed { get; set; } = -600.0f;
 
-    [Export]
-    public float gravity { get; set; } = 980.0f;
+	[Export]
+	public float gravity { get; set; } = 980.0f;
 
-    [Export]
-    public int ongroundSlowdownSteps { get; set; } = 2;
+	[Export]
+	public int ongroundSlowdownSteps { get; set; } = 2;
 
-    [Export]
-    public int maxJumps { get; set; } = 4;
+	[Export]
+	public int maxJumps { get; set; } = 4;
 
 
 
@@ -39,7 +39,7 @@ public partial class Player : CharacterBody2D
 		projectileScene = GetNode<Projectiles>("%Projectiles");
 		levelManager = GetNode<LevelManager>("%LevelManager");
 
-        jumpsRemaining = maxJumps;
+		jumpsRemaining = maxJumps;
 
 
 		// Equivalent to:
@@ -51,11 +51,11 @@ public partial class Player : CharacterBody2D
 
 
 
-    public override void _EnterTree()
-    {
-        // Equivalent to the GDScript _init() assertion.
-        Debug.Assert(ongroundSlowdownSteps > 0,
-            "Onground Slowdown Steps must be > 0!");
+	public override void _EnterTree()
+	{
+		// Equivalent to the GDScript _init() assertion.
+		Debug.Assert(ongroundSlowdownSteps > 0,
+			"Onground Slowdown Steps must be > 0!");
 
 
 		Input.ActionPress("crouch");
@@ -66,6 +66,9 @@ public partial class Player : CharacterBody2D
 	// ================================
 	// Physics
 
+/// <summary>
+/// handels physics of scene.
+/// </summary>
 	public override void _PhysicsProcess(double delta)
 	{
 		float deltaFloat = (float)delta;
@@ -95,14 +98,17 @@ public partial class Player : CharacterBody2D
 	// ================================
 	// Helpers
 
+/// <summary>
+/// Resets the ammount of jumps currently available to the player.
+/// </summary>
+	public void ResetJumps()
+	{
+		jumpsRemaining = maxJumps;
+	}
 
-    public void ResetJumps()
-    {
-        jumpsRemaining = maxJumps;
-    }
-
-
-
+/// <summary>
+/// makes player character jump
+/// </summary>
 	public void Jump()
 	{
 		if (jumpsRemaining == 0)
@@ -110,12 +116,14 @@ public partial class Player : CharacterBody2D
 			return;
 		}
 
-        Velocity = new Vector2(Velocity.X, jumpSpeed);
-        jumpsRemaining--;
-    }
+		Velocity = new Vector2(Velocity.X, jumpSpeed);
+		jumpsRemaining--;
+	}
 
 
-
+/// <summary>
+/// interprets player input to change the player character's x-velocity.
+/// </summary>
 	public bool HorizontalMove()
 	{
 		// Returns whether the player received movement input.
@@ -124,22 +132,22 @@ public partial class Player : CharacterBody2D
 			Input.GetAxis("walk left", "walk right");
 
 
-        if (keyPressedDirection != 0)
-        {
-            if (Input.IsActionPressed("crouch"))
-            {
-                Velocity = new Vector2(
-                    keyPressedDirection * crouchSpeed,
-                    Velocity.Y
-                );
-            }
-            else
-            {
-                Velocity = new Vector2(
-                    keyPressedDirection * horizontalSpeed,
-                    Velocity.Y
-                );
-            }
+		if (keyPressedDirection != 0)
+		{
+			if (Input.IsActionPressed("crouch"))
+			{
+				Velocity = new Vector2(
+					keyPressedDirection * crouchSpeed,
+					Velocity.Y
+				);
+			}
+			else
+			{
+				Velocity = new Vector2(
+					keyPressedDirection * horizontalSpeed,
+					Velocity.Y
+				);
+			}
 
 
 			return true;
@@ -149,24 +157,30 @@ public partial class Player : CharacterBody2D
 	}
 
 
-
-    private void SlowDown()
-    {
-        Velocity = new Vector2(
-            Mathf.MoveToward(
-                Velocity.X,
-                0,
-                horizontalSpeed / ongroundSlowdownSteps
-            ),
-            Velocity.Y
-        );
-    }
+/// <summary>
+///makes the player character slow down.
+/// </summary>
+	private void SlowDown()
+	{
+		Velocity = new Vector2(
+			Mathf.MoveToward(
+				Velocity.X,
+				0,
+				horizontalSpeed / ongroundSlowdownSteps
+			),
+			Velocity.Y
+		);
+	}
 
 
 
 	// ================================
 	// Movement functions
 
+/// <summary>
+/// moves the player character based on velocity when on ground.
+/// </summary>
+/// <param name="delta">delta-t.</param>
 	private void OngroundMovement(float delta)
 	{
 		ResetJumps();
@@ -185,13 +199,16 @@ public partial class Player : CharacterBody2D
 	}
 
 
-
-    private void InAirMovement(float delta)
-    {
-        Velocity = new Vector2(
-            Velocity.X,
-            Velocity.Y + gravity * delta
-        );
+/// <summary>
+/// moves the player character based on velocity when in air.
+/// </summary>
+/// <param name="delta">delta-t.</param>
+	private void InAirMovement(float delta)
+	{
+		Velocity = new Vector2(
+			Velocity.X,
+			Velocity.Y + gravity * delta
+		);
 
 
 		bool jumping = Input.IsActionJustPressed("jump");
@@ -207,7 +224,11 @@ public partial class Player : CharacterBody2D
 
 	// ================================
 	// Shooting
-
+	
+/// <summary>
+/// checks for input to shoot.
+/// </summary>
+/// <param name="@event"> is an event. </param>
 	public override void _Input(InputEvent @event)
 	{
 		if (@event.IsActionPressed("shoot"))
@@ -216,7 +237,9 @@ public partial class Player : CharacterBody2D
 		}
 	}
 
-
+/// <summary>
+/// makes player character shoot a projectile
+/// </summary>
 	private void Shoot()
 	{
 		projectileScene.Shoot(this);
@@ -226,6 +249,9 @@ public partial class Player : CharacterBody2D
 	// ================================
 	// Crouching visuals and hitbox
 
+/// <summary>
+/// makes player character crouch down, changes hitbox and sprite.
+/// </summary>
 	private void Crouch()
 	{
 		GetNode<Node2D>("Sprite2D").Visible = false;
@@ -238,7 +264,9 @@ public partial class Player : CharacterBody2D
 			.SetDeferred("disabled", false);
 	}
 
-
+/// <summary>
+/// makes player character uncrouch, changes hitbox and sprite.
+/// </summary>
 	private void Uncrouch()
 	{
 		Velocity = new Vector2(

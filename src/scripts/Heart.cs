@@ -2,6 +2,10 @@ using Godot;
 
 public partial class Heart : Node2D
 {
+	
+/// <summary>
+/// makes heart fade out.
+/// </summary>
 	public void Fade()
 	{
 		Tween tween = CreateTween();
@@ -12,12 +16,18 @@ public partial class Heart : Node2D
 		Disappear();
 	}
 
+/// <summary>
+///makes heart fully dissapear.
+/// </summary>
 	public void Disappear()
 	{
 		GD.Print("I disappear!");
 		Visible = false;
 	}
 
+/// <summary>
+///makes heart reapear.
+/// </summary>
 	public void Reappear()
 	{
 		Visible = true;

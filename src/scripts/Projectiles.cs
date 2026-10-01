@@ -14,10 +14,14 @@ public partial class Projectiles : Node
 
 		return relativePosition.Normalized();
 	}
-
+	
+/// <summary>
+/// handels origin-position and velocity of player-projectile.
+/// </summary>
+/// <param name="asPlayer"> the player character node. </param>
 	public void Shoot(Player asPlayer)
 	{
-        var direction = GetAimDirection(asPlayer);
+		var direction = GetAimDirection(asPlayer);
 		GD.Print(direction);
 
 		var projectile = (Projectile)projectileScene.Instantiate();

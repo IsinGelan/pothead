@@ -13,6 +13,9 @@ public partial class HeartsBar : Node2D
 		heart3 = GetNode<Heart>("Heart3");
 	}
 
+/// <summary>
+/// resets heart ammount to base.
+/// </summary>
 	public void Reset()
 	{
 		heart1.Reappear();
@@ -20,6 +23,10 @@ public partial class HeartsBar : Node2D
 		heart3.Reappear();
 	}
 
+/// <summary>
+/// removes next heart if player dies.
+/// </summary>
+/// <param name="livesLeft"> the ammount of lives the player will have left after. </param>
 	public void Die(int livesLeft)
 	{
 		if (livesLeft == 2)

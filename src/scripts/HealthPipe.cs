@@ -3,7 +3,7 @@ using Godot;
 public partial class HealthPipe : Node2D
 {
 
-    private const int WATER_SECTIONS = 10;
+	private const int WATER_SECTIONS = 10;
 
 
 	private Sprite2D water;
@@ -20,8 +20,8 @@ public partial class HealthPipe : Node2D
 		front = GetNode<Node2D>("Front");
 
 
-        waterSize = water.Texture.GetSize();
-        sectionWidth = waterSize.X / WATER_SECTIONS;
+		waterSize = water.Texture.GetSize();
+		sectionWidth = waterSize.X / WATER_SECTIONS;
 
 
 		water.RegionEnabled = true;
@@ -31,7 +31,10 @@ public partial class HealthPipe : Node2D
 		SetWaterLevel(10);
 	}
 
-
+/// <summary>
+/// updates health bar to show current status.
+/// </summary>
+/// <param name="to"> ammount the water level is to be changed to. </param>
 	public void SetWaterLevel(int to)
 	{
 		float widthAfter = to * sectionWidth;

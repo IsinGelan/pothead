@@ -3,8 +3,8 @@ using Godot;
 public partial class Projectile : Area2D
 {
 
-    [Export]
-    public float projectileSpeed { get; set; } = 1000.0f;
+	[Export]
+	public float projectileSpeed { get; set; } = 1000.0f;
 
 
 	[Export]
@@ -21,14 +21,20 @@ public partial class Projectile : Area2D
 		BodyEntered += OnBodyEntered;
 	}
 
+/// <summary>
+/// makes projectile go in desired direction.
+/// </summary>
+/// <param name="direction"> desired direction. </param>
+	public void Shoot(Vector2 direction)
+	{
+		_direction = direction;
+		_velocity = _direction * projectileSpeed;
+	}
 
-    public void Shoot(Vector2 direction)
-    {
-        _direction = direction;
-        _velocity = _direction * projectileSpeed;
-    }
-
-
+/// <summary>
+/// applyes physics to projectile.
+/// </summary>
+/// <param name="delta"> delta-t </param>
 	public override void _PhysicsProcess(double delta)
 	{
 		ApplyGravity(delta);
@@ -36,11 +42,19 @@ public partial class Projectile : Area2D
 		Position += _velocity * (float)delta;
 	}
 
+/// <summary>
+/// applyes the gravity part of physics.
+/// </summary>
+/// <param name="delta"> delta-t </param>
 	private void ApplyGravity(double delta)
 	{
 		_velocity.Y += gravityStrength * (float)delta;
 	}
 
+/// <summary>
+/// makes projectile do something upon impact.
+/// </summary>
+/// <param name="body"> the body of this node </param>
 	private void OnBodyEntered(Node2D body)
 	{
 		// TODO: Do something when impacting something,
