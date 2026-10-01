@@ -34,7 +34,7 @@ public class TestShooting
     {
         var projectileCountBefore = _projectilesScene.GetChildCount();
 
-        _projectilesScene.Call("shoot", _player);
+        _projectilesScene.Shoot(_player);
 
         AssertThat(_projectilesScene.GetChildCount())
             .IsEqual(projectileCountBefore + 1);
@@ -46,7 +46,7 @@ public class TestShooting
     {
         _player.Position = new Vector2(100, 200);
 
-        _projectilesScene.Call("shoot", _player);
+        _projectilesScene.Shoot(_player);
 
         var projectile = (Projectile)_projectilesScene.GetChild(
             _projectilesScene.GetChildCount() - 1
@@ -60,10 +60,10 @@ public class TestShooting
     [RequireGodotRuntime]
     public void ProjectileFliesTowardsAimDirection()
     {
-        _player.Position = Vector2.Zero;
+        var playerPosition = _player.Position;
 
         // Put the mouse 100 pixels to the right of the player.
-        Input.WarpMouse(new Vector2(100, 0));
+        Input.WarpMouse(playerPosition + new Vector2(100, 0));
 
         _projectilesScene.Shoot(_player);
 
@@ -83,9 +83,9 @@ public class TestShooting
             "res://src/scenes/projectile.tscn"
         );
 
-        var projectile = AutoFree(scene.Instantiate<Node2D>());
+        var projectile = AutoFree(scene.Instantiate<Projectile>());
 
-        var projectileSpeed = (float)projectile.Get("projectile_speed");
+        var projectileSpeed = projectile.projectileSpeed;
 
         AssertThat(projectileSpeed)
             .IsGreater(_player.horizontalSpeed);

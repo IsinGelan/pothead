@@ -39,7 +39,6 @@ public partial class Player : CharacterBody2D
 		projectileScene = GetNode<Projectiles>("%Projectiles");
 		levelManager = GetNode<LevelManager>("%LevelManager");
 
-
         jumpsRemaining = maxJumps;
 
 

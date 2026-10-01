@@ -12,6 +12,7 @@ public class TestJumping
     public void BeforeEach()
     {
         _player = AutoFree(new Player());
+        _player.ResetJumps();
     }
 
     [TestCase]
