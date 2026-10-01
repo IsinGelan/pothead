@@ -2,8 +2,10 @@ using Godot;
 
 public partial class Projectile : Area2D
 {
-	[Export]
-	public float ProjectileSpeed { get; set; } = 1000.0f;
+
+    [Export]
+    public float projectileSpeed { get; set; } = 1000.0f;
+
 
 	[Export]
 	public float gravityStrength { get; set; } = 300.0f;
@@ -19,11 +21,13 @@ public partial class Projectile : Area2D
 		BodyEntered += OnBodyEntered;
 	}
 
-	public void Shoot(Vector2 direction)
-	{
-		_direction = direction;
-		_velocity = _direction * ProjectileSpeed;
-	}
+
+    public void Shoot(Vector2 direction)
+    {
+        _direction = direction;
+        _velocity = _direction * projectileSpeed;
+    }
+
 
 	public override void _PhysicsProcess(double delta)
 	{

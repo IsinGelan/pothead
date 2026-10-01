@@ -2,7 +2,9 @@ using Godot;
 
 public partial class HealthPipe : Node2D
 {
-	private const int WaterSections = 10;
+
+    private const int WATER_SECTIONS = 10;
+
 
 	private Sprite2D water;
 	private Node2D front;
@@ -17,8 +19,10 @@ public partial class HealthPipe : Node2D
 		water = GetNode<Sprite2D>("Water");
 		front = GetNode<Node2D>("Front");
 
-		waterSize = water.Texture.GetSize();
-		sectionWidth = waterSize.X / WaterSections;
+
+        waterSize = water.Texture.GetSize();
+        sectionWidth = waterSize.X / WATER_SECTIONS;
+
 
 		water.RegionEnabled = true;
 
