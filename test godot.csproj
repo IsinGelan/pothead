@@ -5,4 +5,7 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>testgodot</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Pothead.Tests/**/*.cs" />
+  </ItemGroup>
 </Project>
